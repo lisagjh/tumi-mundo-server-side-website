@@ -22,7 +22,7 @@
       </div> -->
 
 
-      <h2>Lessons</h2>
+      <h1>Lessons</h1>
       <form>
         <input type="search" id="story-search">
         <button><i class='bx bx-search'></i></button>
@@ -30,9 +30,9 @@
 
       <% stories.forEach(story=> { %>
         <article class="story">
-          <h3>
+          <h2>
             <%= story.title %>
-          </h3>
+          </h2>
           <p>
             <%= story.summary %>
           </p>
@@ -41,7 +41,7 @@
             <% } %>
               <div class="story-extras">
                 <button>play</button>
-                <p>story length</p>
+                <p>length</p>
                 <button>download</button>
                 <button>like</button>
               </div>
