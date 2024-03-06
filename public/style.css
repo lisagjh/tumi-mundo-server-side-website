@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --poppins: "Poppins", Arial, Helvetica, sans-serif;
+  --menu-one: #3f92b6;
+  --accent-one: #3d7a95;
+  --menu-two: #599ae7;
+  --accent-two: #4d7eb7;
+  --menu-three: #954be2;
+  --accent-three: #451acf;
+  --menu-four: #06a192;
+  --accent-four: #078377;
+  --menu-five: #fd8c73;
+  --accent-five: #ea775e;
+
+  --color-one: #1cb854;
+  --color-two: #37c6ab;
+  --color-three: #059cc0;
+  --color-four: #ff8c59;
+  --color-five: #ffa02e;
+
+  --menu-layover: #292929; /* 95% opacity */
+
+  --gradient-one: linear-gradient(#3f93b7, #1c5872);
+  --gradient-two: linear-gradient(#040404, #471871);
+
+  --method-one: #9264f4;
+  --method-two: #9264f4;
+  --method-three: #a170cf;
+  --gradient-method: linear-gradient(#471871, #142151);
+
+  --stats-one: #27b26f;
+  --stats-two: #43756c;
+  --stats-three: #6fcfad;
+  --stats-method: linear-gradient(#219b9b, #1b7070);
+
+  --test-one: #599ae7;
+  --test-two: #424b75;
+  --test-three: #707fcf;
+  --test-method: linear-gradient(#21599b, #1b3d70);
+
+  --prof-one: #e76a59;
+  --prof-two: #754643;
+  --prof-three: #e98d7b;
+  --prof-method: linear-gradient(#f0775d, #b45751);
+
+  --space-reg: 1.2rem;
+  --space-half: 0.6rem;
+  --space-small: 0.3rem;
+  --space-big: 1.8rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--poppins);
+}
+
+
+
+
+nav {
+  ul {
+    display: flex;
+    flex-direction: row;
+
+    li {
+      margin-right: var(--space-half);
+      list-style: none;
+    }
+
+    a {
+      color: var(--menu-one);
+    }
+     a:visited {
+      color: var(--menu-one);
+     }
+  }
+}
+
+article {
+  display: grid;
+  grid-template-areas: 
+  "a a b b"
+  "a a c c"
+  "d d d d ";
+  padding: var(--space-small);
+  margin: var(--space-small);
+}
+
+.story img {
+  grid-area: a;
+  width: 150px;
+}
+
+.story h3 {
+  grid-area: b;
+}
+
+.story p {
+  grid-area: c;
+}
+
+.story-extras {
+  display: flex;
+  flex-direction: row;
+  grid-area: d;
+  margin: var(--space-small);
+
+  p {
+    font-size: smaller;
+  }
+
+  button {
+    height: fit-content;
+    padding: var(--space-small);
+    margin-right: var(--space-small);
+  }
+}
+
+.active {
+  color: var(--menu-three);
+}
