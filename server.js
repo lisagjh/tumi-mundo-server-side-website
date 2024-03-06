@@ -67,18 +67,6 @@ app.get("/playlists", function (request, response) {
   })
 })
 
-// app.get("/stats", function (request, response) {
-//   response.render("stats", {
-//     stats: storyData.data,
-//   })
-// })
-
-// app.get("/profile", function (request, response) {
-//   response.render("profile", {
-//     profile: storyData.data,
-//   })
-// })
-
 // 3. Start de webserver
 // Stelt het port nummer in
 app.set("port", process.env.PORT || 8000);

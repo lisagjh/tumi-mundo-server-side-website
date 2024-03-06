@@ -77,14 +77,6 @@ main {
   }
 }
 
-/** components */
-
-button {
-  border-radius: 6px;
-  border: none;
-  padding: var(--space-small) var(--space-half);
-}
-
 /** nav */
 
 nav {
@@ -95,6 +87,7 @@ nav {
   ul {
     display: flex;
     flex-direction: row;
+    font-size: 0.9rem;
   }
 
   li {
@@ -112,11 +105,21 @@ nav {
   color: var(--menu-three);
 }
 
+/** top content - search and filters */
+
+.top-content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-small);
+
+}
+
 /** story article */
 
 .container-story {
   display: grid;
   place-items: center;
+  padding: var(--space-small);
 }
 
 .story {
@@ -126,8 +129,9 @@ nav {
     "a a c c"
     "d d d d ";
   justify-content: left;
-  width: 90%;
+  width: 100%;
   max-width: 40rem;
+  height: fit-content;
   background-color: var(--primary-two);
   padding: var(--space-half);
   margin: var(--space-third) 0;
@@ -152,15 +156,22 @@ nav {
   display: flex;
   flex-direction: row;
   grid-area: d;
-  margin: var(--space-small);
+  margin: var(--space-small) 0;
+  /* justify-self: end; */
+
 
   p {
     font-size: smaller;
   }
 
   button {
-    height: fit-content;
+    color: var(--primary-two);
+    height: 2rem;
+    align-items: center;
     margin-right: var(--space-small);
+    padding: var(--space-small) var(--space-half);
+    border: none;
+    border-radius: 6px;
   }
 
   button:first-of-type {
@@ -172,11 +183,18 @@ nav {
   }
 
   button:last-of-type {
-    color: var(--primary-two);
     background-color: var(--color-three);
+    font-size: 1.3rem;
     border: none;
+    padding: 0 var(--space-half);
+
+    i {
+      color: var(--primary-two);
+    }
   }
 }
+
+/** form & search */
 
 form {
   display: flex;
@@ -184,6 +202,7 @@ form {
   align-items: center;
   background-color: var(--primary-two);
   width: fit-content;
+  padding: var(--space-small);
   border-radius: 6px;
 
   input {
@@ -194,6 +213,7 @@ form {
   button {
     background-color: transparent;
     font-size: 1.2rem;
+    border: none;
   }
 }
 
@@ -216,6 +236,12 @@ form {
   }
 }
 
+@media (min-width: 400px) {
+  nav ul {
+    font-size: 1.2rem;
+  }
+}
+
 @media (min-width: 850px) {
   .container-story {
     display: grid;
@@ -223,10 +249,24 @@ form {
   }
 
   .story {
+    grid-template-areas: 
+    "a a a a"
+    "b c c c"
+    "d d d d";
     max-width: 45vw;
 
+    h2 {
+      grid-area: a;
+      justify-self: center;
+    }
+
     img {
+      grid-area: b;
       align-self: center;
+    }
+
+    .story-extras {
+      grid-area: d;
     }
   }
 }
