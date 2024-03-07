@@ -36,7 +36,6 @@ const playlistData = await fetchJson(apiUrl + "/playlist");
 const languageData = await fetchJson(apiUrl + '/tm_language');
 const speakerData = await fetchJson(apiUrl + '/tm_speaker_profile');
 const audioData = await fetchJson(apiUrl + '/tm_audio');
-const playlistData = await fetchJson(apiUrl + '/tm_playlist');
 
 // Maak een GET route voor de index
 // Stap 1
