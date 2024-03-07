@@ -30,44 +30,61 @@ app.use(express.urlencoded({ extended: true }));
 
 // 2. Routes die HTTP Request and Responses afhandelen
 
-// Haal alle data uit de API op
-const storyData = await fetchJson(apiUrl + "/tm_story");
-const playlistData = await fetchJson(apiUrl + "/playlist");
-const languageData = await fetchJson(apiUrl + '/tm_language');
-const speakerData = await fetchJson(apiUrl + '/tm_speaker_profile');
-const audioData = await fetchJson(apiUrl + '/tm_audio');
+// Maak een GET route voor de home
 
-// Maak een GET route voor de index
-// Stap 1
-app.get("/", function (request, response) {
-  // Stap 2
-  // Haal alle personen uit de WHOIS API op
-  fetchJson(apiUrl + "/tm_story").then((apiData) => {
-    //hier kan je ook filters mee geven
-    // Stap 3
-    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+app.get('/', function (request, response) {
 
-    // Stap 4
-    // HTML maken op basis van JSON data
-    response.render("home", {
-      stories: storyData.data,
-      playlists: playlistData.data,
-      language: languageData.data,
-      speaker: speakerData.data,
-      audio: audioData.data,
-    });
-  });
-});
+  Promise.all([ // Fetch data from all endpoints concurrently using Promise.all()
+    fetchJson(apiUrl + '/tm_story'), // Fetch data from the tm_story endpoint
+    fetchJson(apiUrl + '/tm_language'), // Fetch data from the tm_language endpoint
+    fetchJson(apiUrl + '/tm_playlist'), // Fetch data from the tm_playlist endpoint
+    fetchJson(apiUrl + '/tm_audio') // Fetch data from the tm_audio endpoint
+  ]).then(([storyData, languageData, playlistData, audioData]) => {
+// After all promises are resolved, this function will be executed with the fetched data
 
-app.get("/stories", function (request, response) {
-  response.render("stories", {
-    stories: storyData.data,
+// Render the 'index.ejs' template and pass all fetched data to the view   
+ response.render('home', {
+      stories: storyData.data, // Pass fetched story data to the view under the 'stories' key
+      languages: languageData.data, // Pass fetched language data to the view under the 'languages' key
+      playlists: playlistData.data, // Pass fetched playlist data to the view under the 'playlists' key
+      audio: audioData.data}) // Pass fetched audio data to the view under the 'audio' key
+    }); 
   })
-})
 
-app.get("/playlists", function (request, response) {
-  response.render("playlists", {
-    playlists: playlistData.data,
+// Maak een GET route voor de lessons pagina
+
+// app.get('/lessons', function (request, response) {
+
+//   Promise.all([
+//     fetchJson(apiUrl + '/tm_story'),
+//     fetchJson(apiUrl + '/tm_language'),
+//     fetchJson(apiUrl + '/tm_playlist'),
+//     fetchJson(apiUrl + '/tm_audio')
+//   ]).then(([storyData, languageData, playlistData, audioData]) => {
+    
+//     response.render('lessons', {
+//       stories: storyData.data,
+//       languages: languageData.data,
+//       playlists: playlistData.data,
+//       audio: audioData.data})
+//   })
+// })
+
+// Maak een GET route voor de stories pagina
+
+app.get('/stories', function(request, response) {
+  Promise.all([
+    fetchJson(apiUrl + '/tm_story'),
+    fetchJson(apiUrl + '/tm_language'),
+    fetchJson(apiUrl + '/tm_playlist'),
+    fetchJson(apiUrl + '/tm_audio')
+  ]).then(([storyData, languageData, playlistData, audioData]) => {
+    
+    response.render('stories', {
+      stories: storyData.data,
+      languages: languageData.data,
+      playlists: playlistData.data,
+      audio: audioData.data})
   })
 })
 

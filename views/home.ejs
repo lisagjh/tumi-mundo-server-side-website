@@ -15,20 +15,22 @@
         <div class="new-playlist">
           <button aria-label="create new playlist"><i class='bx bx-list-plus'></i></button>
         </div>
-        <% playlists.forEach(playlists=> { %>
+
+        <% playlists.forEach(playlist=> { %>
           <article class="playlist">
-            <% if (playlists.image) { %><img src="https://fdnd-agency.directus.app/assets/<%= playlists.image %>"
+            <% if (playlist.image) { %><img src="https://fdnd-agency.directus.app/assets/<%= playlist.image %>"
                 alt="playlist cover image">
               <% } %>
                 <h3>
-                  <%= playlists.title %>
+                  <%= playlist.title %>
                 </h3>
                 <p>
-                  <%= playlists.description %>
+                  <%= playlist.description %>
                 </p>
+
                 <div class="playlist-btn">
-                  <button aria-label="download playlist"><i class='bx bxs-download'></i></button>
-                  <button aria-label="see playlist details"><i class='bx bxs-right-arrow'></i></button>
+                  <button aria-label="download playlist" class="download-btn"><i class='bx bxs-download'></i></button>
+                  <button aria-label="see playlist details" class="play-btn"><i class='bx bxs-right-arrow'></i></button>
                 </div>
           </article>
           <% }) %>
@@ -38,7 +40,12 @@
 
       <div class="carousel-btn">
         <button aria-label="previous"><i class='bx bxs-left-arrow'></i></button>
-        <button aria-label="next"><i class='bx bxs-right-arrow'></i></button>
+        <% playlists.forEach(playlist=> { %>
+          <a href="#" >
+            <%= playlist.id %>
+          </a>
+          <% }) %>
+            <button aria-label="next"><i class='bx bxs-right-arrow'></i></button>
       </div>
 
     </div>
@@ -59,9 +66,9 @@
                   <%= story.summary %>
                 </p>
                 <div class="story-extras">
-                  <button aria-label="download story"><i class='bx bxs-download'></i></button>
-                  <button aria-label="add story to playlist"><i class='bx bx-list-plus'></i></button>
-                  <button aria-label="play story"><i class='bx bx-play'></i></button>
+                  <button class="download-btn" aria-label="download story"><i class='bx bxs-download'></i></button>
+                  <button class="addto-btn" aria-label="add story to playlist"><i class='bx bx-list-plus'></i></button>
+                  <button class="play-btn" aria-label="play story"><i class='bx bx-play'></i></button>
                 </div>
           </article>
           <% }) %>
