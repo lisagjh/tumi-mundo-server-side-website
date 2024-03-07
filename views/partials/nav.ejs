@@ -9,11 +9,12 @@
         <li>
             <a href="/playlists" <% if (current=='/playlists' ) { %> class="active"<% } %>>Playlists</a>
         </li>
-        <li>
-            <a href="/stats" <% if (current=='/stats' ) { %> class="active"<% } %>>Statistics</a>
-        </li>
-        <li>
-            <a href="/profile" <% if (current=='/profile' ) { %> class="active"<% } %>>Profile</a>
-        </li>
     </ul>
+
+    <div class="top-content">
+        <form>
+          <input type="search" id="story-search" placeholder="search...">
+          <button aria-label="search"><i class='bx bx-search'></i></button>
+        </form>
+      </div>
 </nav>

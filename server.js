@@ -30,12 +30,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // 2. Routes die HTTP Request and Responses afhandelen
 
-// Haal alle squads uit de WHOIS API op
+// Haal alle data uit de API op
 const storyData = await fetchJson(apiUrl + "/tm_story");
-// const languageData = await fetchJson(apiUrl + '/tm_language')
-// const speakerData = await fetchJson(apiUrl + '/tm_speaker_profile')
-// const audioData = await fetchJson(apiUrl + '/tm_audio')
-// const playlistData = await fetchJson(apiUrl + '/tm_playlist')
+const playlistData = await fetchJson(apiUrl + "/playlist");
+const languageData = await fetchJson(apiUrl + '/tm_language');
+const speakerData = await fetchJson(apiUrl + '/tm_speaker_profile');
+const audioData = await fetchJson(apiUrl + '/tm_audio');
+const playlistData = await fetchJson(apiUrl + '/tm_playlist');
 
 // Maak een GET route voor de index
 // Stap 1
@@ -51,6 +52,10 @@ app.get("/", function (request, response) {
     // HTML maken op basis van JSON data
     response.render("home", {
       stories: storyData.data,
+      playlists: playlistData.data,
+      language: languageData.data,
+      speaker: speakerData.data,
+      audio: audioData.data,
     });
   });
 });
@@ -63,7 +68,7 @@ app.get("/stories", function (request, response) {
 
 app.get("/playlists", function (request, response) {
   response.render("playlists", {
-    playlist: storyData.data,
+    playlists: playlistData.data,
   })
 })
 

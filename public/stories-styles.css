@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --poppins: "Poppins", Arial, Helvetica, sans-serif;
+
+  --primary-one: #121212;
+  --primary-two: #fff9f9;
+  --primary-three: #dadfe1;
+
+  --menu-one: #3f92b6;
+  --accent-one: #3d7a95;
+  --menu-two: #599ae7;
+  --accent-two: #4d7eb7;
+  --menu-three: #954be2;
+  --accent-three: #451acf;
+  --menu-four: #06a192;
+  --accent-four: #078377;
+  --menu-five: #fd8c73;
+  --accent-five: #ea775e;
+
+  --color-one: #1cb854;
+  --color-two: #37c6ab;
+  --color-three: #059cc0;
+  --color-four: #ff8c59;
+  --color-five: #ffa02e;
+
+  --menu-layover: #292929; /* 95% opacity */
+
+  --gradient-one: linear-gradient(#3f93b7, #1c5872);
+  --gradient-two: linear-gradient(#471871, #040404);
+  --gradient-three: linear-gradient(#451971, #162152);
+
+  --method-one: #9264f4;
+  --method-two: #9264f4;
+  --method-three: #a170cf;
+  --method-gradient: linear-gradient(#471871, #142151);
+
+  --stats-one: #27b26f;
+  --stats-two: #43756c;
+  --stats-three: #6fcfad;
+  --stats-method: linear-gradient(#219b9b, #1b7070);
+
+  --test-one: #599ae7;
+  --test-two: #424b75;
+  --test-three: #707fcf;
+  --test-method: linear-gradient(#21599b, #1b3d70);
+
+  --prof-one: #e76a59;
+  --prof-two: #754643;
+  --prof-three: #e98d7b;
+  --prof-method: linear-gradient(#f0775d, #b45751);
+
+  --space-reg: 1.2rem;
+  --space-half: 0.6rem;
+  --space-small: 0.3rem;
+  --space-big: 1.8rem;
+  --space-third: 0.9rem;
+}
+
+* {
+  box-sizing: border-box;
+  color: var(--primary-one);
+  margin: 0;
+  padding: 0;
+  font-family: var(--poppins);
+}
+
+body {
+  line-height: 1.5;
+}
