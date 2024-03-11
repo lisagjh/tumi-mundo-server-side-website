@@ -1,18 +1,17 @@
 <%- include('./partials/head') %>
-  <!-- * voorbeeld van krijn: https://github.com/krijnhoetmer/server-side-rendering-server-side-website/tree/main  -->
-
   <header>
     <%- include('partials/nav', {current: '/' }); %>
-
   </header>
 
   <main>
+
 
     <div class="playlist-wrapper">
       <h2>Playlists</h2>
 
       <div class="playlist-container">
-        <div class="new-playlist">
+        <div class="new-playlist playlist">
+          <p>Create a new playlist!</p>
           <button aria-label="create new playlist"><i class='bx bx-list-plus'></i></button>
         </div>
 
@@ -34,7 +33,6 @@
                 </div>
           </article>
           <% }) %>
-
 
       </div>
 
@@ -74,7 +72,6 @@
           <% }) %>
 
       </div>
-
     </div>
   </main>
 

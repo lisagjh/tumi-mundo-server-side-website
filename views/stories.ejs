@@ -1,16 +1,41 @@
-<%- include('./partials/head') %>
-    <%- include('partials/nav', {current: '/stories' }); %>
+<%- include('./partials/stories-head') %>
+  <%- include('partials/nav', {current: '/stories' }); %>
 
-        <main>
-            <h1>stories</h1>
+    <main class="stories-page">
 
-            <div class="top-content">
-                <h1>Lessons</h1>
-                <form>
-                  <input type="search" id="story-search" placeholder="search...">
-                  <button aria-label="search"><i class='bx bx-search'></i></button>
-                </form>
-              </div>
+      <div class="stories-wrapper">
+        <h2>All Stories</h2>
+        <div class="top-content">
+          <form>
+            <input type="search" id="story-search" placeholder="search...">
+            <button aria-label="search"><i class='bx bx-search'></i></button>
+          </form>
+        </div>
+        <div class="stories-container">
+          <% stories.forEach(story=> { %>
+            <article class="story">
+              <h3>
+                <%= story.title %>
+              </h3>
+              <% if (story.image) { %><img src="https://fdnd-agency.directus.app/assets/<%= story.image %>"
+                  alt="story cover image">
+                <% } %>
+
+                  <p>
+                    <%= story.summary %>
+                  </p>
+                  <div class="story-extras">
+                    <button class="download-btn" aria-label="download story"><i class='bx bxs-download'></i></button>
+                    <button class="addto-btn" aria-label="add story to playlist"><i
+                        class='bx bx-list-plus'></i></button>
+                    <button class="play-btn" aria-label="play story"><i class='bx bx-play'></i></button>
+                  </div>
+            </article>
+            <% }) %>
 
 
-        </main>
+
+
+
+
+    </main>
