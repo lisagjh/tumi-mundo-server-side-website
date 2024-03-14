@@ -5,7 +5,7 @@
 import fetchJson from "./helpers/fetch-json.js";
 
 // Importeer het npm pakket express uit de node_modules map
-import express from "express";
+import express, { response } from "express";
 
 // Stel het basis endpoint in
 const apiUrl = "https://fdnd-agency.directus.app/items";
@@ -25,8 +25,6 @@ app.use(express.static("public"));
 
 // Zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({ extended: true }));
-
-/*** Routes & data ***/
 
 // 2. Routes die HTTP Request and Responses afhandelen
 
@@ -87,6 +85,25 @@ app.get("/playlists", function (request, response) {
     });
   });
 });
+
+// Maak een GET route voor een detailpagina met een request parameter id
+
+app.get("/stories/:slug", function (request, response) {
+
+  fetchJson(`${apiUrl}/tm_story?filter[slug][_eq]=${request.params.slug}`).then((data) => {
+    console.log(data)
+    // response.render("story", {
+    //   stories: storyData.data,
+    //   languages: languageData.data,
+    //   audio: audioData.data,
+    //   playlists: playlistData.data,
+    // })
+  })
+})
+
+
+// link justus https://fdnd-agency.directus.app/items/tm_playlist?fields=*.*.* 
+
 
 // 3. Start de webserver
 // Stelt het port nummer in

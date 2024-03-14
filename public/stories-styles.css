@@ -140,32 +140,6 @@ nav {
   color: var(--menu-three);
 }
 
-/** form & search */
-
-form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: var(--primary-two);
-  width: 95%;
-  padding: var(--space-small);
-  border-radius: 6px;
-
-  input {
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    padding: var(--space-small);
-  }
-  button {
-    background-color: transparent;
-    font-size: 1.2rem;
-    border: none;
-  }
-  button i {
-    color: var(--menu-three);
-  }
-}
 
 /** top content - search and filters */
 

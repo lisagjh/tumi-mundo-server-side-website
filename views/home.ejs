@@ -5,74 +5,85 @@
 
   <main>
 
-
-    <div class="playlist-wrapper">
-      <h2>Playlists</h2>
-
-      <div class="playlist-container">
-        <div class="new-playlist playlist">
-          <p>Create a new playlist!</p>
-          <button aria-label="create new playlist"><i class='bx bx-list-plus'></i></button>
+   <div class="container">
+      <div class="top-content">
+        <h1>Lessons</h1>
+        <form>
+          <input type="search" id="story-search" placeholder="search...">
+          <button aria-label="search"><i class='bx bx-search'></i></button>
+        </form>
+      </div>
+  
+      <div class="playlist-wrapper">
+        <h2>Playlists</h2>
+  
+        <div class="playlist-container">
+          <div class="new-playlist playlist">
+            <p>Create a new playlist!</p>
+            <button aria-label="create new playlist"><i class='bx bx-list-plus'></i></button>
+          </div>
+  
+          <% playlists.forEach(playlist=> { %>
+            <article class="playlist">
+              <% if (playlist.image) { %><img src="https://fdnd-agency.directus.app/assets/<%= playlist.image %>"
+                  alt="playlist cover image">
+                <% } %>
+                  <h3>
+                    <%= playlist.title %>
+                  </h3>
+                  <p>
+                    <%= playlist.description %>
+                  </p>
+  
+                  <div class="playlist-btn">
+                    <button aria-label="download playlist" class="download-btn"><i class='bx bxs-download'></i></button>
+                    <button aria-label="see playlist details" class="play-btn"><i class='bx bxs-right-arrow'></i></button>
+                  </div>
+            </article>
+            <% }) %>
+  
         </div>
-
-        <% playlists.forEach(playlist=> { %>
-          <article class="playlist">
-            <% if (playlist.image) { %><img src="https://fdnd-agency.directus.app/assets/<%= playlist.image %>"
-                alt="playlist cover image">
-              <% } %>
-                <h3>
-                  <%= playlist.title %>
-                </h3>
-                <p>
-                  <%= playlist.description %>
-                </p>
-
-                <div class="playlist-btn">
-                  <button aria-label="download playlist" class="download-btn"><i class='bx bxs-download'></i></button>
-                  <button aria-label="see playlist details" class="play-btn"><i class='bx bxs-right-arrow'></i></button>
-                </div>
-          </article>
-          <% }) %>
-
+  
+        <div class="carousel-btn">
+          <button aria-label="previous"><i class='bx bxs-left-arrow'></i></button>
+          <% playlists.forEach(playlist=> { %>
+            <a href="#">
+              <%= playlist.id %>
+            </a>
+            <% }) %>
+              <button aria-label="next"><i class='bx bxs-right-arrow'></i></button>
+        </div>
+  
       </div>
+  
+      <div class="story-wrapper">
+        <h2><a href="/stories">Stories</a></h2>
+        <div class="story-container">
+          <% stories.forEach(story=> { %>
+            <article class="story">
+              <h3>
+                <%= story.title %>
+              </h3>
+              <% if (story.image) { %><img src="https://fdnd-agency.directus.app/assets/<%= story.image %>"
+                  alt="story cover image">
+                <% } %>
+  
+                  <p>
+                    <%= story.summary %>
+                  </p>
+                  <div class="story-extras">
+                    <button class="download-btn" aria-label="download story"><i class='bx bxs-download'></i></button>
+                    <button class="addto-btn" aria-label="add story to playlist"><i class='bx bx-list-plus'></i></button>
 
-      <div class="carousel-btn">
-        <button aria-label="previous"><i class='bx bxs-left-arrow'></i></button>
-        <% playlists.forEach(playlist=> { %>
-          <a href="#">
-            <%= playlist.id %>
-          </a>
-          <% }) %>
-            <button aria-label="next"><i class='bx bxs-right-arrow'></i></button>
+                    <a href="/stories/<%= story.slug %>" class="play-btn" aria-label="play story"><i class='bx bx-play'></i></a>
+
+                  </div>
+            </article>
+            <% }) %>
+  
+        </div>
       </div>
-
-    </div>
-
-    <div class="story-wrapper">
-      <h2><a href="/stories">Stories</a></h2>
-      <div class="story-container">
-        <% stories.forEach(story=> { %>
-          <article class="story">
-            <h3>
-              <%= story.title %>
-            </h3>
-            <% if (story.image) { %><img src="https://fdnd-agency.directus.app/assets/<%= story.image %>"
-                alt="story cover image">
-              <% } %>
-
-                <p>
-                  <%= story.summary %>
-                </p>
-                <div class="story-extras">
-                  <button class="download-btn" aria-label="download story"><i class='bx bxs-download'></i></button>
-                  <button class="addto-btn" aria-label="add story to playlist"><i class='bx bx-list-plus'></i></button>
-                  <button class="play-btn" aria-label="play story"><i class='bx bx-play'></i></button>
-                </div>
-          </article>
-          <% }) %>
-
-      </div>
-    </div>
+   </div>
   </main>
 
   <%- include('./partials/foot') %>

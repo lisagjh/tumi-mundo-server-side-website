@@ -72,13 +72,12 @@
 
 body {
   line-height: 1.5;
+  background: var(--gradient-three);
 }
 
 main {
   padding: var(--space-half);
-  background: var(--gradient-three);
   color: var(--primary-two);
-
   overflow: hidden;
 
   h1,
@@ -142,12 +141,17 @@ nav {
 
 /** form & search */
 
+.top-content {
+  padding: var(--space-big) var(--space-small);
+  margin-bottom: var(--space-big);
+}
+
 form {
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: var(--primary-two);
-  width: 95%;
+  width: 55%;
   padding: var(--space-small);
   border-radius: 6px;
 
@@ -167,14 +171,6 @@ form {
   }
 }
 
-
-/** top content - search and filters */
-
-.top-content {
-  display: flex;
-  flex-direction: column;
-}
-
 /** containers */
 
 .playlist-wrapper,
@@ -184,8 +180,6 @@ form {
   padding: var(--space-small);
 }
 
-/** playlist article */
-
 .playlist-container {
   display: flex;
   flex-direction: row;
@@ -194,6 +188,13 @@ form {
   scrollbar-color: var(--menu-three) var(--extra-color);
   padding: var(--space-third);
 }
+
+.story-container {
+  display: grid;
+  place-items: center;
+}
+
+/** playlist article */
 
 .playlist {
   display: grid;
@@ -213,6 +214,8 @@ form {
     align-self: flex-start;
     width: 180px;
     height: 180px;
+    margin-top: var(--space-small);
+    border-radius: 6px;
   }
 
   p {
@@ -299,11 +302,6 @@ form {
 
 /** story article */
 
-.container-story {
-  display: grid;
-  place-items: center;
-}
-
 .story {
   display: flex;
   flex-direction: column;
@@ -319,7 +317,9 @@ form {
 
 .story img {
   width: 150px;
-  margin: var(--space-half) 0;
+  height: 150px;
+  border-radius: 6px;
+  margin-top: var(--space-half);
 }
 
 .story h3 {
@@ -335,7 +335,7 @@ form {
 
 /** buttons */
 
-button {
+button, .play-btn  {
   display: grid;
   place-items: center;
   color: var(--primary-two);
@@ -350,7 +350,11 @@ button {
   i {
     font-size: 1.3rem;
     color: var(--primary-two);
-  }
+  } 
+}
+
+.story-extras a {
+  text-decoration: none;
 }
 
 button:hover {
@@ -377,6 +381,8 @@ button:active {
   background-color: var(--extra-four);
 }
 
+
+
 .play-btn {
   background-color: var(--color-three);
 }
@@ -393,44 +399,58 @@ button:active {
 /* media query */
 
 @media (min-width: 530px) {
-  main {
+
+  .container {
     display: grid;
-    justify-content: center;
+    place-items: center;
   }
 
-  .playlist-wrapper,
-  .story-wrapper {
+  .top-content {
     width: 100%;
     max-width: 40rem;
-    --space-big: 2.2rem;
-    padding: 0 var(--space-big);
+  }
+
+  .story-wrapper, .playlist-wrapper {
+    display: grid;
+    width: 100%;
+    max-width: 40rem;
   }
 
   .playlist-container {
-    width: 100%;
+    max-width: 40rem;
   }
 
   .story-container {
     display: grid;
     place-items: center;
     grid-template-columns: 1fr 1fr;
-    gap: 0 1rem;
+    gap: 0rem 1rem;
+    width: 100%;
   }
 
   .story {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    max-width: 21rem;
-    height: 28rem;
+    height: 27rem;
   }
 
-  .story .story-extras {
-    display: flex;
-    flex-direction: row;
-    align-self: flex-end;
-    justify-self: center;
+  .story h3 {
+    height: 4rem;
   }
+
+  .story img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .story p {
+    height: 9rem;
+    padding-top: var(--space-small);
+    overflow: hidden;
+  }
+
+  .story-extras {
+    height: 2rem;
+  }
+
 }
 
 @media (min-width: 630px) {
@@ -438,10 +458,6 @@ button:active {
     --space-big: 3rem;
     nav {
       padding-left: var(--space-big);
-    }
-
-    .top-content {
-      padding-right: var(--space-big);
     }
   }
 }
