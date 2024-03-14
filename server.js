@@ -90,17 +90,15 @@ app.get("/playlists", function (request, response) {
 
 app.get("/stories/:slug", function (request, response) {
 
-  fetchJson(`${apiUrl}/tm_story?filter[slug][_eq]=${request.params.slug}`).then((data) => {
-    console.log(data)
-    // response.render("story", {
-    //   stories: storyData.data,
-    //   languages: languageData.data,
-    //   audio: audioData.data,
-    //   playlists: playlistData.data,
-    // })
+    fetchJson(`${apiUrl}/tm_story?filter{"slug": "${request.params.slug}"}`).then(() => {
+      response.render("/story", {
+        stories: storyData.data,
+        languages: languageData.data,
+        playlists: playlistData.data,
+        audio: audioData.data,
+      });
   })
 })
-
 
 // link justus https://fdnd-agency.directus.app/items/tm_playlist?fields=*.*.* 
 
