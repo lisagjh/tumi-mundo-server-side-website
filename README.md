@@ -6,7 +6,7 @@ Ontwerp en ontwikkel een server-side website voor een opdrachtgever.
 
 
 ## Inhoudsopgave
-
+ 
   * [Beschrijving](#beschrijving)
   * [Gebruik](#gebruik)
   * [Kenmerken](#kenmerken)
